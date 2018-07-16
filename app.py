@@ -5,7 +5,8 @@ url = "https://fortnite-public-api.theapinetwork.com/prod09/users/id"
 payload = "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"username\"\r\n\r\n{}\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--"
 headers = {
     'content-type': "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW",
-    'Authorization': "e8d20d92631995b6d22e5d1ec0b21411"
+    'Authorization': "YOUR_API_KEY"
+    	#you can get one here: https://fortniteapi.com/
     }
     
 app= Flask (__name__)

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FortNite King</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <section class="hero is-success">
+        <!-- Hero head: will stick at the top -->
+        <div class="hero-head">
+            <nav class="navbar">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a class="navbar-item">
+            <img src="https://media.playstation.com/is/image/SCEA/fortnite-logo-02-ps4-us-10apr18?$native$" alt="Logo">
+          </a>
+                        <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+            <span></span>
+                        <span></span>
+                        <span></span>
+                        </span>
+                    </div>
+                    <div id="navbarMenuHeroA" class="navbar-menu">
+                        <div class="navbar-end">
+                            <a class="navbar-item is-active">
+              Home
+            </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- Hero content: will be in the middle -->
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title">
+        Who is The King of Fortnite?
+      </h1>
+                <h2 class="subtitle">
+        Look up any player's stats below!
+      </h2>
+            </div>
+        </div>
+        <!-- Hero footer: will stick at the bottom -->
+        <div class="hero-foot">
+            <!--     <nav class="tabs">
+      <div class="container">
+        <ul>
+          <li class="is-active"><a>Overview</a></li>
+          <li><a>Modifiers</a></li>
+        </ul>
+      </div>
+    </nav> -->
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <form method="POST" action="/">
+                <div class="field is-grouped">
+                    <p class="control is-expanded">
+                        <input class="input" name="UserName" type="text" placeholder="User name">
+                    </p>
+                    <p class="control">
+                        <button class="button is-info"> Search</button>
+                        </a>
+                    </p>
+                    <div class="select">
+                        <select name="platform">
+                            <option>pc</option>
+                            <option>ps4</option>
+                            <option>xb1</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="tile is-ancestor input_fields_wrap">
+                <div class="tile is-vertical">
+                    <div class="tile">
+                        {% if player_one %}
+                        <div class="tile is-parent is-vertical">
+                            <article class="tile is-child notification is-info">
+                                <center>
+                                    <p class="title">{{player_one}}</p>
+                                    <p class="subtitle">Kills: {{player_one_stats['kills']}}</p>
+                                    <p class="subtitle">Wins: {{player_one_stats['wins']}}</p>
+                                    <p class="subtitle">Matches: {{player_one_stats['matchesplayed']}}</p>
+                                </center>
+                            </article>
+                        </div>
+                        {% endif %}
+                        <!--       {% if player_two %}
+      <div class="tile is-parent">
+        <article class="tile is-child notification is-info">
+          <p class="title">{{player_two}}</p>
+          <p class="subtitle">Kills: {{player_two_stats['kills']}}</p>
+          <p class="subtitle">Wins: {{player_two_stats['wins']}}</p>
+          <p class="subtitle">Matches: {{player_two_stats['matchesplayed']}}</p>
+        </article>
+        {% endif %}
+      </div> -->
+                    </div>
+                </div>
+            </div>
+            {% if player_one %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            <abbr title="Player_Name">Player</abbr>
+                        </th>
+                        <th>
+                            <abbr title="Kills">Kills</abbr>
+                        </th>
+                        <th>
+                            <abbr title="Wins">Wins</abbr>
+                        </th>
+                        <th>
+                            <abbr title="Matches_Played">Matches Played</abbr>
+                        </th>
+                        <th>
+                            <abbr title="Minutes_Played">Minutes Played</abbr>
+                        </th>
+                        <th>
+                            <abbr title="Hours_Played">Hours Played</abbr>
+                        </th>
+                        <th>
+                            <abbr title="Score">Score</abbr>
+                        </th>
+                        <th>
+                            <abbr title="Win_rate">Winning Rate</abbr>
+                        </th>
+                        <th>
+                            <abbr title="Kd">Kill:Death</abbr>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th><strong>{{player_one}}</strong></th>
+                        <td>{{player_one_stats['kills']}}</td>
+                        <td>{{player_one_stats['wins']}}</td>
+                        <td>{{player_one_stats['matchesplayed']}}</td>
+                        <td>{{player_one_stats['minutesplayed']}}</td>
+                        <td>{{player_one_stats['hoursplayed']}}</td>
+                        <td>{{player_one_stats['score']}}</td>
+                        <td>{{player_one_stats['winrate']}}</td>
+                        <td>{{player_one_stats['kd']}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            {% endif %}
+        </div>
+    </section>
+</body>
+{%if errormsg %}
+<div class="modal is-active" id="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">An error occured</p>
+            <button class="delete toggle-modal"></button>
+        </header>
+        <section class="modal-card-body">
+            {{errormsg}}
+        </section>
+        <footer class="modal-card-foot">
+            <a class="button toggle-modal">Close</a>
+        </footer>
+    </div>
+</div>
+<script type="text/javascript">
+var modal = document.getElementById('modal');
+var elements = document.getElementsByClassName('toggle-modal');
+for (var i = 0; i < elements.length; i++) {
+    elements[i].addEventListener('click', toggleClass);
+}
+
+function toggleClass() {
+    modal.classList.toggle('is-active');
+}
+</script>
+{% endif %}
+
+</html>
